@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router';
 
 import Header from '@/components/Header';
-import { Toaster } from '@/components/ui/sonner.tsx';
 
 const MainLayout = () => {
   return (

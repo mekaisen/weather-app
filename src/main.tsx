@@ -11,6 +11,7 @@ import {
 import Auth from '@/components/pages/Auth';
 import MainLayout from '@/components/pages/Layout/MainLayout';
 
+import Home from './components/pages/Home/Home';
 import { Toaster } from './components/ui/sonner';
 import { useLocalStorage } from './shared/hooks';
 import AuthProvider from './utils/context/Auth/AuthProvider';
@@ -19,11 +20,6 @@ import { ThemeProvider } from './utils/context/Theme/theme-provider';
 
 import './index.css';
 
-const Home = () => {
-  return (
-    <div>hello</div>
-  );
-};
 const Layout = () => {
   return (
     <><Outlet /><Toaster /></>

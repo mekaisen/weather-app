@@ -1,5 +1,20 @@
 import type { FlatMockServerConfig } from 'mock-config-server';
 
+// let cities = [
+//   'tomsk-tomsk-russia',
+//   'novosibirsk-novosibirsk-russia',
+//   'new-york-new-york-united-states-of-america',
+//   'paris-ile-de-france-france',
+//   'australind-western-australia-australia',
+//   'toronto-ontario-canada',
+//   'tomsk-tomsk-russia',
+//   'novosibirsk-novosibirsk-russia',
+//   'new-york-new-york-united-states-of-america',
+//   'paris-ile-de-france-france',
+//   'australind-western-australia-australia',
+//   'toronto-ontario-canada'
+// ];
+
 const flatMockServerConfig: FlatMockServerConfig = [
   {
     baseUrl: '/api'
@@ -35,6 +50,7 @@ const flatMockServerConfig: FlatMockServerConfig = [
           }
         ]
       }
+
     ]
   }
 ];
