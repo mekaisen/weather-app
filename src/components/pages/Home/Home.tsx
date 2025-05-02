@@ -1,6 +1,6 @@
 import type { ChangeEvent } from 'react';
 
-import { useDeferredValue, useState } from 'react';
+import { useState } from 'react';
 
 import { Input } from '@/components/ui/input';
 import { useDebounceCallback } from '@/shared/hooks';
