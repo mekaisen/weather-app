@@ -1,6 +1,7 @@
 import type { ChangeEvent } from 'react';
 
 import { useState } from 'react';
+import { Link } from 'react-router';
 
 import { Input } from '@/components/ui/input';
 import { useDebounceCallback } from '@/shared/hooks';
@@ -59,22 +60,27 @@ const Home = () => {
           <div className='flex justify-center items-center p-8 rounded-md border'>
             <div className='h-6 w-6 border-2 border-primary border-t-transparent rounded-full animate-spin'></div>
           </div>
-        ) : cities ? (
+        ) : Array.isArray(cities) && cities.length !== 0 ? (
           <div className='rounded-md border divide-y'>
             {cities.map((city) => (
-              <div
-                key={city.id}
-                className='p-3 hover:bg-accent transition-colors cursor-pointer flex items-center justify-between'
-              >
-                <div>
-                  <div className='font-medium'>{city.name}</div>
-                  <div className='text-sm text-muted-foreground'>{city.region}, {city.country}</div>
+              <Link key={city.id} to={`/city/${city.name.toLowerCase()}`}>
+                <div
+                  className='p-3 hover:bg-accent transition-colors cursor-pointer flex items-center justify-between'
+                >
+                  <div>
+                    <div className='font-medium'>{city.name}</div>
+                    <div className='text-sm text-muted-foreground'>{city.region}, {city.country}</div>
+                  </div>
+                  <div className='text-xs text-muted-foreground'>
+                    {city.lat}, {city.lon}
+                  </div>
                 </div>
-                <div className='text-xs text-muted-foreground'>
-                  {city.lat}, {city.lon}
-                </div>
-              </div>
+              </Link>
             ))}
+          </div>
+        ) : Array.isArray(cities) && cities.length === 0 ? (
+          <div className='text-center p-4 text-muted-foreground rounded-md border'>
+            Города не найдены
           </div>
         ) : (
           <div className='text-center p-4 text-muted-foreground rounded-md border'>

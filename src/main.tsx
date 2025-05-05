@@ -3,20 +3,19 @@ import {
   createBrowserRouter,
   Navigate,
   Outlet,
-  redirect,
-  RouterProvider,
-  useNavigate
+  RouterProvider
 } from 'react-router';
 
-import Auth from '@/components/pages/Auth';
-import MainLayout from '@/components/pages/Layout/MainLayout';
-
-import Home from './components/pages/Home/Home';
-import { Toaster } from './components/ui/sonner';
-import { useLocalStorage } from './shared/hooks';
-import AuthProvider from './utils/context/Auth/AuthProvider';
-import { useAuthContext } from './utils/context/Auth/useAuthContext';
-import { ThemeProvider } from './utils/context/Theme/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
+import Auth from '@/pages/Auth';
+import City from '@/pages/City/City';
+import Home from '@/pages/Home/Home';
+import MainLayout from '@/pages/Layout/MainLayout';
+import { useLocalStorage } from '@/shared/hooks';
+import { getWeatherForecastCity } from '@/utils/api/requests/weather/forecast/city';
+import AuthProvider from '@/utils/context/Auth/AuthProvider';
+import { useAuthContext } from '@/utils/context/Auth/useAuthContext';
+import { ThemeProvider } from '@/utils/context/Theme/theme-provider';
 
 import './index.css';
 
@@ -46,7 +45,18 @@ const router = createBrowserRouter([
             Component: MainLayout,
             children: [
               { index: true, Component: Home },
-              { path: 'porno', Component: Home }
+              { path: 'porno', Component: Home },
+              {
+                path: 'city/:cityName',
+                Component: City,
+                loader: async ({ params }) => {
+                  if (!params.cityName) {
+                    return;
+                  }
+                  const res = await getWeatherForecastCity(params.cityName, '1');
+                  return { ...res };
+                }
+              }
             ]
           }
         ]
