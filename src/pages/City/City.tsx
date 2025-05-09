@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router';
 const City = () => {
   const data = useLoaderData<WeatherResponse>();
   const { current, forecast, location } = data.data;
-  console.log(data);
   const today = forecast.forecastday[0];
 
   return (
@@ -31,7 +30,6 @@ const City = () => {
           </div>
         </div>
 
-        {/* Детали */}
         <div className='p-6'>
           <div className='flex justify-between items-center mb-6'>
             <div>
@@ -64,7 +62,6 @@ const City = () => {
             </div>
           </div>
 
-          {/* Прогноз по часам */}
           <h2 className='text-2xl font-bold mb-4'>Прогноз по часам</h2>
           <div className='overflow-x-auto pb-4'>
             <div className='flex space-x-4 min-w-max'>
@@ -91,7 +88,6 @@ const City = () => {
             </div>
           </div>
 
-          {/* Дополнительная информация */}
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-8'>
             <div className='bg-muted/20 p-5 rounded-lg'>
               <h3 className='text-xl font-bold mb-3'>Восход и закат</h3>

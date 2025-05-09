@@ -17,6 +17,8 @@ import AuthProvider from '@/utils/context/Auth/AuthProvider';
 import { useAuthContext } from '@/utils/context/Auth/useAuthContext';
 import { ThemeProvider } from '@/utils/context/Theme/theme-provider';
 
+import Profile from './pages/Profile/Profile';
+
 import './index.css';
 
 const Layout = () => {
@@ -56,6 +58,11 @@ const router = createBrowserRouter([
                   const res = await getWeatherForecastCity(params.cityName, '1');
                   return { ...res };
                 }
+              },
+              {
+                path: 'profile',
+                Component: Profile
+
               }
             ]
           }
